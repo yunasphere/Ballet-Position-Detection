@@ -8,7 +8,7 @@ from mediapipe.tasks.python.vision import drawing_utils
 from mediapipe.tasks.python.vision import drawing_styles
 
 #Model for limb ('landmark') detection
-model_path = '/Users/oscar/Documents/Ballet/pose_landmarker_full.task'
+model_path = '/Users/oscar/Documents/Github/Ballet/Ballet-Position-Detection/pose_landmarker_full.task'
 
 #PoseLandmarker
 BaseOptions = mp.tasks.BaseOptions
