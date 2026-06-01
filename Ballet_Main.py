@@ -1,6 +1,12 @@
+"""
+Main file to run program; launches camera and initialises landmarker.
+May move landmarker/drawing utils stuff to other file at some point.
+"""
+
 import mediapipe as mp
 import cv2
 import numpy as np
+import Compare as comp
 
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
