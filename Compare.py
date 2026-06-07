@@ -18,5 +18,5 @@ def DeterminePose(frame):
 
 #Calculate rotation difference in 2 landmarks
 def RotationDiff():
-
+    print ("TODO: Calculate Rotation dif")
 
