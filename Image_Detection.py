@@ -12,9 +12,14 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 from mediapipe.tasks.python.vision import drawing_utils
 from mediapipe.tasks.python.vision import drawing_styles
+from pathlib import Path
+
 
 #Model for limb ('landmark') detection
-model_path = '/Users/oscar/Documents/Github/Ballet/Ballet-Position-Detection/pose_landmarker_full.task'
+#model_path = '/Users/oscar/Documents/Github/Ballet/Ballet-Position-Detection/pose_landmarker_full.task'
+model_path = str(Path(__file__).parent)
+model_path += '/pose_landmarker_full.task'
+
 
 #PoseLandmarker (IMAGE)
 BaseOptions = mp.tasks.BaseOptions
@@ -51,6 +56,10 @@ detector = vision.PoseLandmarker.create_from_options(options)
 #Image needs to be an mp image in BGR foRmat
 #TODO: Remove test image
 bgr_img = cv2.imread("/Users/oscar/Documents/GitHub/Ballet/Ballet-Position-Detection/image.jpg")
+
+#IGNORE: testing thing :)
+#bgr_img = cv2.imread("/Users/oscar/Documents/DigiCam/PICT0854.JPG")
+
 image = mp.Image(image_format=mp.ImageFormat.SRGB, data=bgr_img)
 
 detection_result = detector.detect(image)

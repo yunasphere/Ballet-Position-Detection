@@ -12,9 +12,13 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 from mediapipe.tasks.python.vision import drawing_utils
 from mediapipe.tasks.python.vision import drawing_styles
+from pathlib import Path
+
 
 #Model for limb ('landmark') detection
-model_path = '/Users/oscar/Documents/Github/Ballet/Ballet-Position-Detection/pose_landmarker_full.task'
+#model_path = '/Users/oscar/Documents/Github/Ballet/Ballet-Position-Detection/pose_landmarker_full.task'
+model_path = str(Path(__file__).parent)
+model_path += '/pose_landmarker_full.task'
 
 #PoseLandmarker (LIVE FEED)
 BaseOptions = mp.tasks.BaseOptions
