@@ -54,25 +54,22 @@ def draw_landmarks_on_image(image, detection_result):
 detector = vision.PoseLandmarker.create_from_options(options)
 
 #Image needs to be an mp image in BGR foRmat
-#TODO: Remove test image
-bgr_img = cv2.imread("/Users/oscar/Documents/GitHub/Ballet/Ballet-Position-Detection/image.jpg")
 
 #IGNORE: testing thing :)
 #bgr_img = cv2.imread("/Users/oscar/Documents/DigiCam/PICT0854.JPG")
-
-image = mp.Image(image_format=mp.ImageFormat.SRGB, data=bgr_img)
-
-detection_result = detector.detect(image)
-annotated_image = draw_landmarks_on_image(image.numpy_view(), detection_result)
+#image = mp.Image(image_format=mp.ImageFormat.SRGB, data=bgr_img)
+#detection_result = detector.detect(image)
+#annotated_image = draw_landmarks_on_image(image.numpy_view(), detection_result)
 
 #Display annotated image
-cv2.imshow('', cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR))
-cv2.waitKey(0)
+#cv2.imshow('', cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR))
+#cv2.waitKey(0)
 
 
-"""
-PLAN:
-- Display small UI that containing button to select and image and process it for landmarks.
-- Then give option to save it as a ballet position, adding it to dataset
-- For admin use only
-"""
+def landmark_image(input_image):
+    image = mp.Image(image_format=mp.ImageFormat.SRGB, data=input_image)
+    detection_result = detector.detect(image)
+    annotated_image = draw_landmarks_on_image(image.numpy_view(), detection_result)
+
+    return annotated_image
+

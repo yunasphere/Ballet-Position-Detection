@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
 
+from Image_Detection import landmark_image
+
 def select_and_process_image():
     # Open file dialog
     file_path = filedialog.askopenfilename(
@@ -12,7 +14,7 @@ def select_and_process_image():
 
     if file_path:
         img = cv2.imread(file_path)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        landmarked = landmark_image(img)
 
         # Ensure DATASET folder exists
         output_folder = "DATASET"
@@ -21,13 +23,13 @@ def select_and_process_image():
         # Build output file path
         filename = os.path.basename(file_path)
         name, ext = os.path.splitext(filename)
-        output_path = os.path.join(output_folder, f"{name}_gray{ext}")
+        output_path = os.path.join(output_folder, f"{name}_landmarked{ext}")
 
-        # Save grayscale image
-        cv2.imwrite(output_path, gray)
+        # Save landmarked image
+        cv2.imwrite(output_path, landmarked)
 
-        # Display grayscale image
-        cv2.imshow("Grayscale Image", gray)
+        # Display landmarled image
+        cv2.imshow("Landmarked Image", landmarked)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
